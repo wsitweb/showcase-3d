@@ -1,0 +1,221 @@
+:root {
+  --accent: #CC8869;
+  --text: #333;
+  --regular-text: 16px;
+  --lineheight: 1.65;
+  --userfont: roboto-st, sans-serif;
+  --systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  --padding: 120px;
+  --transition: cubic-bezier(.4, 0, 0, 1);
+  --index-size: calc(1vh + 1vw);
+}
+
+/* gutter 20px (10px + 10px). Comment this code for default gutter start at 1.5rem (24px) wide. 
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl { --bs-gutter-x: .625rem; }
+.row, .row > * { --bs-gutter-x: 1.25rem; }
+*/
+@font-face {
+  src: url("../fonts/roboto-regular-webfont.woff2") format("woff2");
+  font-family: "roboto-st";
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  src: url("../fonts/roboto-italic-webfont.woff2") format("woff2");
+  font-family: "roboto-st";
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  src: url("../fonts/roboto-bold-webfont.woff2") format("woff2");
+  font-family: "roboto-st";
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  src: url("../fonts/roboto-bolditalic-webfont.woff2") format("woff2");
+  font-family: "roboto-st";
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  src: url("../fonts/assassin.woff2") format("woff2");
+  font-family: "assassin-st";
+  font-weight: 700;
+  font-style: italic;
+}
+::-moz-placeholder {
+  color: #666;
+}
+:-ms-input-placeholder {
+  color: #666;
+}
+::placeholder {
+  color: #666;
+}
+
+::-moz-selection {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+input, textarea {
+  outline: none;
+}
+
+input:focus:required:invalid, textarea:focus:required:invalid {
+  border-color: red;
+}
+
+input:required:valid, textarea:required:valid {
+  border-color: green;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, article {
+  height: 100%;
+}
+
+.showcase {
+  background-color: #000;
+  height: 100%;
+  position: relative;
+  color: #fff;
+}
+.showcase__content-wrapper {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: var(--padding) 0;
+}
+.showcase__content-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url(../images/glow.png) no-repeat center center;
+  background-size: cover;
+  -webkit-animation: k-glow 1.8s ease infinite;
+          animation: k-glow 1.8s ease infinite;
+}
+.showcase__header {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 40px;
+  z-index: 3;
+  font-family: assassin-st, sans-serif;
+  font-size: 32px;
+  color: rgb(202, 202, 202);
+}
+.showcase__header span {
+  color: var(--accent);
+}
+.showcase::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  box-shadow: inset 0 0 500px #000;
+}
+.showcase::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url(../images/light.png) no-repeat center calc(var(--index-size) * -5);
+  background-size: cover;
+  -webkit-animation: k-light 3s ease infinite;
+          animation: k-light 3s ease infinite;
+}
+
+@-webkit-keyframes k-light {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes k-light {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+@-webkit-keyframes k-glow {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+@keyframes k-glow {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+video {
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  opacity: 0.4;
+}
+
+.showcase-carousel__item {
+  position: relative;
+  height: calc(100vh - var(--padding) * 2);
+  text-align: center;
+  opacity: 0.25;
+  transform: scale(0.75);
+}
+.showcase-carousel__item.swiper-slide-active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+.showcase-carousel__image-wrapper > * {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  perspective: 150px;
+  transform-style: preserve-3d;
+}
+.showcase-carousel__image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: contain !important;
+}
