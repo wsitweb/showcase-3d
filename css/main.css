@@ -91,6 +91,7 @@ html, body, article {
   height: 100%;
   position: relative;
   color: #fff;
+  overflow: hidden;
 }
 .showcase__content-wrapper {
   position: relative;
@@ -195,16 +196,48 @@ video {
   opacity: 0.4;
 }
 
+.showcase-carousel .swiper-wrapper {
+  transition: var(--transition);
+}
+
+.showcase-carousel__wrapper {
+  will-change: transition, transition-duration, transform;
+}
 .showcase-carousel__item {
   position: relative;
   height: calc(100vh - var(--padding) * 2);
   text-align: center;
-  opacity: 0.25;
-  transform: scale(0.75);
+  opacity: 0.2;
+  transform: scale(0.6);
+  transition: opacity 1.2s var(--transition), transform 1.2s var(--transition);
+  flex-shrink: 0;
+  will-change: transform, transition;
+}
+.showcase-carousel__item p {
+  position: absolute;
+  bottom: -85px;
+  width: 100%;
+  font-family: assassin-st, sans-serif;
+  font-size: 32px;
+  color: rgb(163, 163, 163);
+  text-shadow: rgb(49, 65, 78) 0 0 10px;
+}
+.showcase-carousel__item::after {
+  content: "";
+  width: 40vh;
+  height: 8vh;
+  border-radius: 100%;
+  bottom: -3%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  filter: blur(45px);
+  z-index: -1;
 }
 .showcase-carousel__item.swiper-slide-active {
   opacity: 0.8;
-  transform: scale(0.98);
+  transform: scale(0.9);
 }
 .showcase-carousel__image-wrapper > * {
   position: absolute;
@@ -218,4 +251,51 @@ video {
   width: 100%;
   height: 100%;
   background-size: contain !important;
+}
+.showcase-navigation {
+  overflow: hidden;
+  position: absolute;
+  inset: 0;
+}
+.showcase-navigation > * {
+  position: absolute;
+  height: 100%;
+  width: 10%;
+  outline: none;
+  cursor: pointer;
+  z-index: 4;
+}
+.showcase-navigation > *::before {
+  content: "?";
+  font-family: assassin-st;
+  opacity: 0.3;
+  transition: opacity 0.5s ease-out;
+  position: absolute;
+  transform: rotate(-90deg) translate(-50%);
+  left: 50%;
+  top: 50%;
+  font-size: 60px;
+}
+.showcase-navigation > *:last-child::before {
+  transform: rotate(90deg) translate(-50%);
+  right: 50%;
+}
+.showcase-navigation > *:hover::before {
+  opacity: 1;
+}
+.showcase-navigation__prev {
+  left: 0;
+}
+.showcase-navigation__next {
+  right: 0;
+}
+.showcase-navigation > *.swiper-button-disabled::before {
+  opacity: 0;
+}
+
+@media (max-width: 1400px) {
+  .showcase__content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
