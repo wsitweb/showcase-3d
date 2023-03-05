@@ -188,6 +188,7 @@ video{
         outline: none;
         cursor: pointer;
         z-index: 4;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
     & > *{
         &::before{
@@ -202,7 +203,7 @@ video{
             font-size: 60px;
         }
         &:last-child::before{
-            transform: rotate(90deg) translate(-50%);
+            transform: rotate(90deg) translate(-50%, 38%);
             right: 50%;
         }
         &:hover::before{
@@ -223,5 +224,13 @@ video{
     .showcase__content{
         max-width: 1200px;
         margin: 0 auto;
+    }
+    .showcase-carousel{
+        &__item{
+            transform: scale(0.4);
+        }
+        &__item.swiper-slide-active{
+            transform: scale(0.6);
+        }
     }
 }
